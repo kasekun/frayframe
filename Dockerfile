@@ -4,21 +4,13 @@ ENV TERM linux
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-RUN apt-get install -qqy make cmake git pkg-config sudo 
-RUN apt-get install -qqy python3-dev python3-numpy python3-tk python3-pip bpython
-RUN apt-get install -qqy libswscale-dev libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libfreetype6-dev
+RUN apt-get install -qqy python3 python3-pip
 
-RUN python3 -m pip install matplotlib
+# install libraries required for opencv video rendering
+RUN apt-get install -qqy libsm6 libxext6 libxrender-dev
 
-RUN cd \
-    && git clone https://github.com/opencv/opencv.git \
-    && cd opencv \
-    && mkdir build \
-    && cd build \
-    && cmake .. \
-    && make -j \
-    && make install \
-    && cd \
-    && rm -rf opencv
+# install opencv for python3
+RUN python3 -m pip install opencv-python
 
-CMD ["/bin/bash"]
+# add our frayframe code
+ADD frayframe.py /frayframe.py
