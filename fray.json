@@ -1,6 +1,6 @@
 {
   "pipeline": {
-    "name": "fray"
+    "name": "frayframe"
   },
   "description": "A pipeline that extracts frames from videos using the python interface for OpenCV library",
   "input": {
