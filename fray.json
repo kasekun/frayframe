@@ -1,16 +1,16 @@
 {
   "pipeline": {
-    "name": "edges"
+    "name": "fray"
   },
-  "description": "A pipeline that performs image edge detection by using the OpenCV library.",
+  "description": "A pipeline that extracts frames from videos using the python interface for OpenCV library",
   "input": {
     "pfs": {
       "glob": "/*",
-      "repo": "images"
+      "repo": "videos"
     }
   },
   "transform": {
-    "cmd": [ "python3", "/edges.py" ],
-    "image": "pachyderm/opencv"
+    "cmd": [ "python3", "/frayframe.py" ],
+    "image": "kasekun/frayframe-pctl"
   }
 }
